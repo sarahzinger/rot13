@@ -1,26 +1,22 @@
 "use strict"
 var ROT13 = function(message){
-  this.message = message.toLowerCase();
+  this.message = [];
   this.encryptKey = encryptKeyGenerator();
   this.decryptKey = decryptKeyGenerator();
-
+  this.letters = message.toLowerCase().split("");
 };
 
 ROT13.prototype.encrypt = function(){
-  var letters = this.message.split("");
-  this.message = [];
   var self = this;
-  letters.forEach(function(letter){
+  this.letters.forEach(function(letter){
     self.message.push(self.encryptKey[letter]);
   });
   return this.message.join("");
 };
 
 ROT13.prototype.decrypt = function(){
-  var letters = this.message.split("");
-  this.message = [];
   var self = this;
-  letters.forEach(function(letter){
+  this.letters.forEach(function(letter){
     self.message.push(self.decryptKey[letter]);
   });
   return this.message.join("");
